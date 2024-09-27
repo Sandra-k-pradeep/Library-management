@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House of Wisdom</title>
+    <link rel="stylesheet" href="maincss.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+       
+
+        .add-member-section {
+            margin-left: 280px; /* add some margin to move it to the right of the nav */
+            padding: 20px;
+        }
+        input, textarea {
+		  display: block;
+		  width: 25%;
+		  padding: 10px;
+		  margin: 10px 0;
+		  border: 1px solid #ccc;
+		  border-radius: 4px;
+		}
+		button {
+		  padding: 10px 20px;
+		  background-color: #4CAF50;
+		  color: white;
+		  border: none;
+		  cursor: pointer;
+		  margin-top: 10px;
+		}
+		button:hover {
+		  background-color: #45a049;
+		}
+		.submit-btn {
+		  width: 100%;
+		  margin-top: 20px;
+		  text-align: center;
+		}
+		@media (max-width: 768px) {
+		  .container {
+			flex-direction: column;
+		  }
+		}
+       
+    </style>
+</head>
+<body>
+    <nav class="navbar-secondary">
+        <div class="brand-title"><b>House Of Wisdom</b></div>
+        <div class="navbar-links">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Books</a></li>
+                <li><a href="#">Members</a></li>
+                <li><a href="#">Issue/Return</a></li>
+                <li><a href="#">Reports</a></li>
+            </ul>
+        </div>
+    </nav>
+<form style="margin:80px">
+ <label for="bookTitle"><b>Book Title</b></label>
+  <input type="text" id="bookTitle" placeholder="Enter Book Title">
+
+  <label for="authorName"><b>Author Name</b></label>
+  <input type="text" id="authorName" placeholder="Enter Author Name">
+
+  <label for="bookCount"><b>Copies Available</b></label>
+  <input type="number" id="bookCount" placeholder="Enter Book Count">
+  
+  <label for="bookCount"><b>Publisher</b></label>
+  <input type="text" id="publisher" placeholder="Enter Book Count">
+  
+  <label for="bookCount"><b>Date of Publication</b></label>
+  <input type="date" id="dateofpublication" placeholder="Enter Book Count">
+  
+   <label for="bookTitle"><b>Genre</b></label>
+  <input type="text" id="genre" placeholder="Enter Book Title">
+
+  <button onclick="addOrUpdateBook()">Add Book</button></form>
+
+   <!-- Search Book -->
+  <div>
+    <h3>Search Books</h3>
+    <input type="text" id="searchTerm" placeholder="Search by Title" onkeyup="searchBooks()">
+  </div>
+
+  <!-- Book Table -->
+  <table id="bookTable">
+    <thead>
+      <tr>
+        <th>Book Title</th>
+        <th>Author Name</th>
+        <th>No.of copies</th>
+		<th>Publisher</th>
+        <th>Date of Publication</th>
+		<th>Genre</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Book rows will be added here -->
+    </tbody>
+  </table>
+
+  <script>
+    let books = [];
+
+    function addBook() {
+      const title = document.getElementById('bookTitle').value;
+      const author = document.getElementById('authorName').value;
+      const count = document.getElementById('bookCount').value;
+	  const publisherr = document.getElementById('publisher').value;
+      const dateofpublicationn = document.getElementById('dateofpublication').value;
+	  const genree = document.getElementById('genre').value;
+
+
+      if (title && author && count) {
+        books.push({ title, author, count: parseInt(count) });
+        document.getElementById('bookTitle').value = '';
+        document.getElementById('authorName').value = '';
+        document.getElementById('bookCount').value = '';
+		document.getElementById('publisher').value = '';
+        document.getElementById('dateofpublication').value = '';
+        document.getElementById('genre').value = '';
+        displayBooks();
+      } else {
+        alert("Please fill in all fields");
+      }
+    }
+
+    function displayBooks() {
+      const tableBody = document.getElementById('bookTable').getElementsByTagName('tbody')[0];
+      tableBody.innerHTML = ''; // Clear the table
+
+      books.forEach((book, index) => {
+        const row = tableBody.insertRow();
+        const cell1 = row.insertCell(0);
+        const cell2 = row.insertCell(1);
+        const cell3 = row.insertCell(2);
+        const cell4 = row.insertCell(3);
+		const cell5 = row.insertCell(4);
+        const cell6 = row.insertCell(5);
+		const cell7 = row.insertCell(6);
+
+
+        cell1.textContent = book.title;
+        cell2.textContent = book.author;
+        cell3.textContent = book.count;
+		cell4.textContent = book.publisherr;
+        cell5.textContent = book.dateofpublicationn;
+		cell6.textContent = book.genree;
+        cell7.innerHTML = `
+          <div class="actions">
+            <button onclick="editBook(${index})">Update</button>
+            <button onclick="deleteBook(${index})">Delete</button>
+            <button onclick="decreaseCount(${index})">Decrease Count</button>
+          </div>
+        `;
+      });
+    }
+
+    function deleteBook(index) {
+      books.splice(index, 1); // Remove book from array
+      displayBooks(); // Refresh the table
+    }
+
+    function editBook(index) {
+      const newTitle = prompt("Enter new book title:", books[index].title);
+      const newAuthor = prompt("Enter new author name:", books[index].author);
+      const newCount = prompt("Enter new book count:", books[index].count);
+	  const newPublisher = prompt("Enter new publisher name:", books[index].publisherr);
+      const newDOP = prompt("Enter new date of publication:", books[index].dateofpublicationn);
+	  const newGenre = prompt("Enter new genre:", books[index].genree);
+
+      if (newTitle && newAuthor && newCount && newPublisher && newDOP && newGenre) {
+        books[index].title = newTitle;
+        books[index].author = newAuthor;
+        books[index].count = parseInt(newCount);
+		books[index].publisherr = newPublisher;
+        books[index].dateofpublicationn = newDOP;
+		books[index].genree = newGenre;
+        displayBooks();
+      }
+    }
+
+    function decreaseCount(index) {
+      if (books[index].count > 0) {
+        books[index].count -= 1;
+        displayBooks();
+      } else {
+        alert("Book count cannot be less than zero");
+      }
+    }
+
+    function searchBooks() {
+      const searchTerm = document.getElementById('searchTerm').value.toLowerCase();
+      const filteredBooks = books.filter(book => book.title.toLowerCase().includes(searchTerm));
+      const tableBody = document.getElementById('bookTable').getElementsByTagName('tbody')[0];
+      tableBody.innerHTML = ''; // Clear the table
+
+      filteredBooks.forEach((book, index) => {
+        const row = tableBody.insertRow();
+        const cell1 = row.insertCell(0);
+        const cell2 = row.insertCell(1);
+        const cell3 = row.insertCell(2);
+		const cell4 = row.insertCell(3);
+        const cell5 = row.insertCell(4);
+		const cell6 = row.insertCell(5);
+        const cell7 = row.insertCell(6);
+
+        cell1.textContent = book.title;
+        cell2.textContent = book.author;
+        cell3.textContent = book.count;
+		cell4.textContent = book.publisherr;
+        cell5.textContent = book.dateofpublication;
+		cell6.textContent = book.genree;
+        cell7.innerHTML = `
+          <div class="actions">
+            <button onclick="editBook(${index})">Update</button>
+            <button onclick="deleteBook(${index})">Delete</button>
+            <button onclick="decreaseCount(${index})">Decrease Count</button>
+          </div>
+        `;
+      });
+    }
+  </script>
+
+</body>
+</html>

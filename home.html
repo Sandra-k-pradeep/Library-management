@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House of Wisdom</title>
+    <link rel="stylesheet" href="maincss.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .navbar-secondary {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; /* Ensure the navbar stays on top */
+            background-color: #100d46;
+            color: #fff;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .brand-title {
+            font-size: 1.5rem;
+        }
+        .navbar-links ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .navbar-links ul li {
+            margin-left: 1rem;
+        }
+        .navbar-links ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .dashboard {
+            display: flex;
+            min-height: 100vh;
+        }
+/* side nav */
+        .dashboard-nav {
+            min-width: 238px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            overflow: auto;
+            background-color: #100d46;
+        }
+        .dashboard-nav header {
+            min-height: 84px;
+            padding: 8px 27px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dashboard-nav header .menu-toggle {
+            display: none;
+        }
+
+        .dashboard-nav a {
+            color: #fff;
+        }
+
+        .dashboard-nav a:hover {
+            text-decoration: none;
+        }
+
+        .brand-logo {
+            font-family: "Nunito", sans-serif;
+            font-weight: bold;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            color: #515151;
+        }
+
+        .brand-logo:focus, .brand-logo:active, .brand-logo:hover {
+            color: #dbdbdb;
+            text-decoration: none;
+        }
+        .brand-logo i {
+            color: #d2d1d1;
+            font-size: 27px;
+            margin-right: 10px;
+        }
+        .dashboard-nav-list {
+            display: flex;
+            flex-direction: column;
+        }
+        .dashboard-nav-item {
+            min-height: 56px;
+            padding: 8px 20px 8px 70px;
+            display: flex;
+            align-items: center;
+            letter-spacing: 0.02em;
+            transition: ease-out 0.5s;
+        }
+        .dashboard-nav-item i {
+            width: 36px;
+            font-size: 19px;
+            margin-left: -40px;
+        }
+        .dashboard-nav-item:hover {
+            background: rgba(255, 255, 255, 0.04);
+        }
+        .active {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        .menu-toggle:hover, .menu-toggle:active, .menu-toggle:focus {
+            text-decoration: none;
+            color: #875de5;
+        }
+        .menu-toggle i {
+            font-size: 20px;
+        }
+        .dashboard-toolbar {
+            min-height: 84px;
+            background-color: #dfdfdf;
+            display: flex;
+            align-items: center;
+            padding: 8px 27px;
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        
+        .nav-item-divider {
+            height: 1px;
+            margin: 1rem 0;
+            overflow: hidden;
+            background-color: rgba(236, 238, 239, 0.3);
+        }
+          .text {
+            position: absolute; /* Absolute positioning for the text */
+            color: white; /* White text for better contrast */
+            z-index: 10; /* Ensure text is on top of the image */
+            text-align: center; /* Center align text */
+            width: 100%; /* Full width */
+            padding: 10px; /* Some padding around the text */
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+          }
+        .text p {
+            font-size: 1.2em; /* Slightly larger font size */
+            margin: 0.5em 0; /* Add some space around the paragraph */
+        }
+        .slider {
+            position:relative;
+            width: 80%;
+            margin: 40px auto;
+            overflow: hidden;
+            margin-left: 280px;
+        }
+        .slider img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: all 0.5s ease-in-out;
+        }
+        .slider .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+        }
+        .slider .text h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar-secondary">
+        <div class="brand-title"><b>House Of Wisdom</b></div>
+        <div class="navbar-links">
+            <ul>
+                <li><a href="#">Books</a></li>
+                <li><a href="#">Members</a></li>
+                <li><a href="#">Events</a></li>
+                <li><a href="#">Reports</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class='dashboard'>
+        <div class="dashboard-nav">
+            <header>
+                <a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a>
+                <a href="#" class="brand-logo"><i class="fas fa-anchor"></i> <span>BRAND</span></a>
+            </header>
+            <nav class="dashboard-nav-list">
+                <a href="#" class="dashboard-nav-item"><i class="fas fa-home"></i> Dashboard </a>
+                <a href="new_book.html" class="dashboard-nav-item active"><i class="fas fa-tachometer-alt"></i> Add New Book</a>
+                <a href="new_member.html" class="dashboard-nav-item"><i class="fas fa-file-upload"></i> Add New Member </a>
+                <div class='dashboard-nav-dropdown'>
+                    <a href="issue_book.html" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="fas fa-photo-video"></i> Issue Book </a>
+                </div>
+                <div class='dashboard-nav-dropdown'>
+                    <a href="book_return.html" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="fas fa-users"></i> Return Book </a>
+                </div>
+                <div class='dashboard-nav-dropdown'>
+                    <a href="man_book.html" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="fas fa-money-check-alt"></i> Manage Books </a>
+                </div>
+				<div class='dashboard-nav-dropdown'>
+                    <a href="book_renewal.html" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="fas fa-money-check-alt"></i> Book Renewal </a>
+                </div>
+                <a href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i> Logout </a>
+            </nav>
+        </div>
+        <div class="slider">
+            <img src="123.jpg" alt="Slider Image">
+            <div class="text">
+                <h1><b>Welcome to House of Wisdom</b></h1>
+                <p><i><b>Your Journey of Learning and Discovery Starts Here</i></b></p>
+            </div>
+        </div>
+    </div>
+      <!-- Footer -->
+      <footer>
+        <p>&copy; 2024 Library Management System. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
+

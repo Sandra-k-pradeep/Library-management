@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House of Wisdom - Renew Book</title>
+    <link rel="stylesheet" href="maincss.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* existing styles */
+        
+        .renew-book-section {
+            margin-left: 280px; /* add some margin to move it to the right of the nav */
+            padding: 20px;
+        }
+        
+        .image-container {
+            position:relative;
+            width: 80%;
+            margin: 50px auto;
+            overflow: hidden;
+            margin-left: 280px;
+        }
+        .navbar-secondary {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; /* Ensure the navbar stays on top */
+            background-color: #100d46;
+            color: #fff;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .dashboard-nav {
+            min-width: 238px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            overflow: auto;
+            background-color: #100d46;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar-secondary">
+        <div class="brand-title">House Of Wisdom</div>
+        <div class="navbar-links">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Books</a></li>
+                <li><a href="#">Members</a></li>
+                <li><a href="#">Issue/Return</a></li>
+                <li><a href="#">Reports</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class='dashboard'>
+        <div class="dashboard-nav">
+            <header>
+               <nav class="dashboard-nav-list">
+                <a href="#" class="dashboard-nav-item"><i class="fas fa-home"></i> Dashboard </a>
+                <a href="new_book.html" class="dashboard-nav-item active"><i class="fas fa-tachometer-alt"></i> Add New Book</a>
+                <a href="new_member.html" class="dashboard-nav-item"><i class="fas fa-file-upload"></i> Add New Member </a>
+                <div class='dashboard-nav-dropdown'>
+                    <a href="issue_book.html" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="fas fa-photo-video"></i> Issue Book </a>
+                </div>
+                <div class='dashboard-nav-dropdown'>
+                    <a href="book_return.html" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="fas fa-users"></i> Return Book </a>
+                </div>
+                <div class='dashboard-nav-dropdown'>
+                    <a href="man_book.html" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="fas fa-money-check-alt"></i> Manage Books </a>
+                </div>
+				<div class='dashboard-nav-dropdown'>
+                    <a href="book_renewal.html" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="fas fa-money-check-alt"></i> Book Renewal </a>
+                </div>
+                <a href="#" class="dashboard-nav-item"><i class="fas fa-sign-out-alt"></i> Logout </a>
+            </nav>
+        </div>
+        <div style="width: 100%; display: flex; justify-content: space-between;">
+            <div class="renew-book-section">
+                <br>
+                <br>
+                <h2 style="color: #3498db; font-weight: bold;">Renew Book</h2>
+                <form style="background-color: #f9f9f9; padding: 20px; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                    <label for="book-id" style="font-weight: bold; color: #666;">Book ID:</label>
+                    <input type="text" id="book-id" name="book-id" style="width: 100%; height: 40px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px;">
+                    <br><br>
+                    <label for="member-id" style="font-weight: bold; color: #666;">Member ID:</label>
+                    <input type="text" id="member-id" name="member-id" style="width: 100%; height: 40px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px;">
+                    <br><br>
+                    <label for="current-return-date" style="font-weight: bold; color: #666;">Current Return Date:</label>
+                    <input type="date" id="current-return-date" name="current-return-date" style="width: 100%; height: 40px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px;">
+                    <br><br>
+                    <label for="new-return-date" style="font-weight: bold; color: #666;">New Return Date:</label>
+                    <input type="date" id="new-return-date" name="new-return-date" style="width: 100%; height: 40px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px;">
+                    <br><br>
+                    <input type="submit" value="Renew Book" style="background-color: #3498db; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">
+                </form>
+            </div>
+            <br>
+            <br>
+            <img src="renew.png" alt="Renew Book Image" style="width: 500px; height: 500px; margin: 20px; margin-top: 60px;"> <!-- Adjusted margin-top -->
+        </div>  
+    </div>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Library Management System. All rights reserved.</p>
+    </footer>
+</body>
+</html>
